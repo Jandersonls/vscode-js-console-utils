@@ -1,0 +1,23 @@
+import { memoryUsage } from "process";
+
+let myName; 
+section.innerHTML = ' '; 
+const para1  =
+document.createElement('p');
+para1.textContent = myName;
+const para2 = 
+document.createElement('p');
+para2.testContent = myage;
+section.appendChild(para1);
+section.appendChild(para2);
+myName = "JandersonLeandro";
+let myName = 'Janderson Leandro';
+section.innerHTML = ' ';
+const para =
+document.createElement('p');
+para.textContent = myName;
+section.appendchild(para);
+
+
+
+

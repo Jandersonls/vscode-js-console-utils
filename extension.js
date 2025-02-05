@@ -1,4 +1,4 @@
-const vscode = require('vscode');
+
 
 const insertText = (val) => {
     const editor = vscode.window.activeTextEditor;
@@ -88,57 +88,3 @@ function activate(context) {
         const logStatements = getAllLogStatements(document, documentText);
 
         deleteFoundLogStatements(workspaceEdit, document.uri, logStatements);
-    });
-    context.subscriptions.push(deleteAllLogStatements);
-
-    const deleteOnlyLogStatements = vscode.commands.registerCommand('extension.deleteOnlyLogStatements', () => {
-        const editor = vscode.window.activeTextEditor;
-        if (!editor) { return; }
-
-        const document = editor.document;
-        const documentText = editor.document.getText();
-
-        let workspaceEdit = new vscode.WorkspaceEdit();
-
-        const logStatements = getAllLogStatements(document, documentText, 'log');
-
-        deleteFoundLogStatements(workspaceEdit, document.uri, logStatements);
-    });
-    context.subscriptions.push(deleteOnlyLogStatements);
-
-    const deleteOnlyErrorStatements = vscode.commands.registerCommand('extension.deleteOnlyErrorStatements', () => {
-        const editor = vscode.window.activeTextEditor;
-        if (!editor) { return; }
-
-        const document = editor.document;
-        const documentText = editor.document.getText();
-
-        let workspaceEdit = new vscode.WorkspaceEdit();
-
-        const logStatements = getAllLogStatements(document, documentText, 'error');
-
-        deleteFoundLogStatements(workspaceEdit, document.uri, logStatements, 'Error');
-    });
-    context.subscriptions.push(deleteOnlyErrorStatements);
-
-    const deleteOnlyWarnStatements = vscode.commands.registerCommand('extension.deleteOnlyWarnStatements', () => {
-        const editor = vscode.window.activeTextEditor;
-        if (!editor) { return; }
-
-        const document = editor.document;
-        const documentText = editor.document.getText();
-
-        let workspaceEdit = new vscode.WorkspaceEdit();
-
-        const logStatements = getAllLogStatements(document, documentText, 'warn');
-
-        deleteFoundLogStatements(workspaceEdit, document.uri, logStatements, 'Warn');
-    });
-    context.subscriptions.push(deleteOnlyWarnStatements);
-}
-exports.activate = activate;
-
-function deactivate() {
-}
-
-exports.deactivate = deactivate;
